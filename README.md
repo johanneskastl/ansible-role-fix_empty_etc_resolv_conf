@@ -1,7 +1,7 @@
 fix_empty_etc_resolv_conf
 =========
-Fix the empty resolv.conf that a broken cloud-init leaves behind...
 
+Fix the empty resolv.conf that a broken cloud-init leaves behind...
 
 Requirements
 ------------
