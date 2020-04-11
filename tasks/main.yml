@@ -2,7 +2,7 @@
 # fix_empty_etc_resolv_conf/tasks/main.yml
 
 - name: "Check resolv.conf for wrong entries"
-  shell: "cat /etc/resolv.conf" 
+  shell: "cat /etc/resolv.conf"
   register: cat_resolv_conf
   check_mode: false
   changed_when: false
