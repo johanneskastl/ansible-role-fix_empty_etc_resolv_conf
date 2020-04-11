@@ -1,3 +1,5 @@
+![Ansible Lint](https://github.com/johanneskastl/ansible-role-fix_empty_etc_resolv_conf/workflows/Ansible%20Lint/badge.svg)
+
 fix_empty_etc_resolv_conf
 =========
 
