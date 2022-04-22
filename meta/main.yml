@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: 'fix_empty_etc_resolv_conf'
+  namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Fix the /etc/resolv.conf that a broken cloud-init leaves behind...'
   company: 'B1 Systems GmbH'
