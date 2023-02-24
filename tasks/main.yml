@@ -21,7 +21,7 @@
     - 'stat_etc_resolv_conf.stat.exists | bool'
     - 'cat_resolv_conf.stdout.find("; Created by cloud-init on instance boot automatically, do not edit.") != -1'
   notify:
-    - 'restart network service'
+    - 'Restart network service'
 
 - name: 'Restart network.service if file was not existing in the beginning'
   ansible.builtin.service:
