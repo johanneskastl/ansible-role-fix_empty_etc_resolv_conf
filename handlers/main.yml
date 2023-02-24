@@ -1,7 +1,7 @@
 ---
 # fix_empty_etc_resolv_conf/handlers/main.yml
 
-- name: "restart network service"
+- name: 'restart network service'
   ansible.builtin.service:
-    name: "network"
-    state: "restarted"
+    name: 'network'
+    state: 'restarted'
