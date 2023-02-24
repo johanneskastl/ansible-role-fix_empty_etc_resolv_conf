@@ -1,29 +1,29 @@
 ---
 # fix_empty_etc_resolv_conf/tasks/main.yml
 
-- name: "Check if /etc/resolv.conf exists"
+- name: 'Check if /etc/resolv.conf exists'
   stat:
     path: '/etc/resolv.conf'
   register: 'stat_etc_resolv_conf'
 
-- name: "Check resolv.conf for wrong entries"
-  command: "cat /etc/resolv.conf"
+- name: 'Check resolv.conf for wrong entries'
+  command: 'cat /etc/resolv.conf'
   register: cat_resolv_conf
   check_mode: false
   changed_when: false
   when: 'stat_etc_resolv_conf.stat.exists | bool'
 
-- name: "Remove empty /etc/resolv.conf"
+- name: 'Remove empty /etc/resolv.conf'
   file:
-    path: "/etc/resolv.conf"
-    state: "absent"
+    path: '/etc/resolv.conf'
+    state: 'absent'
   when:
     - 'stat_etc_resolv_conf.stat.exists | bool'
     - 'cat_resolv_conf.stdout.find("; Created by cloud-init on instance boot automatically, do not edit.") != -1'
   notify:
-    - "restart network service"
+    - 'restart network service'
 
-- name: "restart network.service if file was not existing in the beginning"
+- name: 'restart network.service if file was not existing in the beginning'
   service:
     name: 'network.service'
     state: 'restarted'
