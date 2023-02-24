@@ -2,19 +2,19 @@
 # fix_empty_etc_resolv_conf/tasks/main.yml
 
 - name: 'Check if /etc/resolv.conf exists'
-  stat:
+  ansible.builtin.stat:
     path: '/etc/resolv.conf'
   register: 'stat_etc_resolv_conf'
 
 - name: 'Check resolv.conf for wrong entries'
-  command: 'cat /etc/resolv.conf'
+  ansible.builtin.command: 'cat /etc/resolv.conf'
   register: cat_resolv_conf
   check_mode: false
   changed_when: false
   when: 'stat_etc_resolv_conf.stat.exists | bool'
 
 - name: 'Remove empty /etc/resolv.conf'
-  file:
+  ansible.builtin.file:
     path: '/etc/resolv.conf'
     state: 'absent'
   when:
@@ -24,7 +24,7 @@
     - 'restart network service'
 
 - name: 'restart network.service if file was not existing in the beginning'
-  service:
+  ansible.builtin.service:
     name: 'network.service'
     state: 'restarted'
   when: 'not stat_etc_resolv_conf.stat.exists | bool'
