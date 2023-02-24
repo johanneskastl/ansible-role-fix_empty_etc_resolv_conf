@@ -23,7 +23,7 @@
   notify:
     - 'restart network service'
 
-- name: 'restart network.service if file was not existing in the beginning'
+- name: 'Restart network.service if file was not existing in the beginning'
   ansible.builtin.service:
     name: 'network.service'
     state: 'restarted'
